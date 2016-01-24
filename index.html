@@ -13,23 +13,33 @@
 </head>
 <body>
 	<div class="container">
-		<div class="row">
+		<div id="locationForm" class="row">
 			<div class="col-sm-6">
 				<fieldset class="form-group">
 				    <label>Loading Point</label>
-				    <input type="text" class="form-control" placeholder="Enter the name of a city" required>
+				    <input type="text" class="form-control location" placeholder="Enter the name of a city" name="address" required>
 				</fieldset>
 			</div>
 			<div class="col-sm-6">
 				<fieldset class="form-group">
 				    <label>Unloading Point</label>
-				    <input type="text" class="form-control" placeholder="Enter the name of a city" required>
+				    <input type="text" class="form-control location" placeholder="Enter the name of a city" name="address"  required>
 				</fieldset>
+			</div>
+			<div id="locationDetails" class="hide">
+			        <input name="lat" type="hidden" class="form-control" />
+			        <input name="lng" type="hidden" class="form-control" />
 			</div>
 		</div>
 	</div>
 	<script>
-	$("input").geocomplete();
+	$(".location")
+	  .geocomplete()
+	  .bind("geocode:result", function(event, result){
+	  	console.log("hi");
+	    console.log(result);
+	  });
+	
 	</script>
 </body>
 </html>
